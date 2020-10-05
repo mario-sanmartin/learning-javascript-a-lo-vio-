@@ -9,6 +9,8 @@ class Task {
     }
 }
 
+
+
 //creamos una instancia de la Task
 const tarea = new Task ("Aprende Javascript");
 console.log(tarea instanceof Task);
@@ -95,3 +97,46 @@ class Reminder extends Task{
 const producir = new Reminder("Producir leccion eterna", "4 de octubre 2020");
 
 console.log(producir.duration);
+
+
+
+////EJERCITANDO
+//Primera forma
+class familia{
+    constructor(nombre,sexo,edad) {
+        if(!nombre) throw new Error("QUe pasa con el nombre hermanito!!!");
+        this.nombre = nombre;
+        this.sexo = sexo;
+        this.edad = edad;
+    }
+}
+
+const integrante = new familia("Vero", "mujer","28");
+console.log(integrante);
+
+
+//Segunda forma
+
+const Familiares = class {
+    constructor(){
+        this.familiares = [
+            {nombre:"Homero" ,sexo:"hombre" , edad:60 , parentesco:"padre"},
+            {nombre:"Lurdez" ,sexo:"mujer" , edad:56 , parentesco:"madre"},
+            {nombre:"Puky" ,sexo:"mujer" , edad:28 , parentesco:"hermano"},
+            {nombre:"Ozuni" ,sexo:"hombre" , edad:35 , parentesco:"hermano"},
+            {nombre:"Boby Jhonson" ,sexo:"hombre" , edad:13 , parentesco:"sobrino"}
+        ]
+    }
+    //getters
+    get generoMasculino(){
+        return[...this.familiares].filter(personita => personita.sexo="hombre");
+    }
+
+    get generoFemenino(){
+        return[...this.familiares].filter(personita => personita.sexo="mujer");
+    }
+}
+
+const miFamilia = new Familiares();
+
+console.log(miFamilia.generoMasculino);
