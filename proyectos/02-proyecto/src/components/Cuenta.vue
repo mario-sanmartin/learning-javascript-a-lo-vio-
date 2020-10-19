@@ -8,8 +8,15 @@
   {{index+1}} - {{servicio}}
 
   </div>
-  <accionSaldo texto="Aumentar Saldo"  @accion="aumentar" />
-  <accionSaldo  texto="Disminuir Saldo" @accion="disminuir"/>
+  <accionSaldo 
+    texto="Aumentar Saldo"
+    @accion="aumentar"
+     />
+  <accionSaldo 
+    texto="Disminuir Saldo"
+   @accion="disminuir"
+   :desactivar="desactivar"
+   />
 </div>
 </template>
 
@@ -24,16 +31,19 @@ export default {
             saldo: 1000,
             cuenta: 'Visa',
             estado:false,
-            servicios:['giro','abono','transferencia']
+            servicios:['giro','abono','transferencia'],
+            desactivar: false
         }
     },
     methods:{
         aumentar(){
             this.saldo =  this.saldo + 100;
+            this.desactivar = false
         },
         disminuir(){
             if(this.saldo === 0 ){
-                alert('Saldo Agotado')
+                this.desactivar = true
+                // alert('Saldo Agotado')
             } else {
                 this.saldo =  this.saldo - 100
             }
