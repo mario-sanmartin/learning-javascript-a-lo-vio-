@@ -1,0 +1,9 @@
+map.set(key,value);
+
+un objeto no es iterable a no ser que usemos:
+entries
+
+-Object metodo estatico
+-Los maps tiene la propiedad size al igual que los sets
+-Los maps son iterables por defecto mediante su symboliterator
+-los maps funcionan mas rapido que los objetos
