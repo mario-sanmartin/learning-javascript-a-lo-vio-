@@ -32,7 +32,11 @@ export default {
             this.saldo =  this.saldo + 100;
         },
         disminuir(){
-            this.saldo =  this.saldo - 100;
+            if(this.saldo === 0 ){
+                alert('Saldo Agotado')
+            } else {
+                this.saldo =  this.saldo - 100
+            }
         }
         
     }
