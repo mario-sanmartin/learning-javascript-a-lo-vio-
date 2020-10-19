@@ -8,8 +8,8 @@
   {{index+1}} - {{servicio}}
 
   </div>
-  <accionSaldo texto="Aumentar Saldo"  @click="aumentar" />
-  <accionSaldo  texto="Disminuir Saldo" @click="disminuir"/>
+  <accionSaldo texto="Aumentar Saldo"  @accion="aumentar" />
+  <accionSaldo  texto="Disminuir Saldo" @accion="disminuir"/>
 </div>
 </template>
 

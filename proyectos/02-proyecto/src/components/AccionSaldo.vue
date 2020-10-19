@@ -1,5 +1,5 @@
 <template>
-  <button> {{texto}}</button>
+  <button @click="this.$emit('accion')" > {{texto}}</button>
 </template>
 
 <script>
