@@ -8,7 +8,7 @@ export default {
         texto: String,
         desactivar:{
           type: Boolean,
-          default: true
+          default: false
         }
     },
     methods:{
