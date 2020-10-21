@@ -1,24 +1,5 @@
-# 02-proyecto
+# 02-proyecto precario
 
-## Project setup
-```
-npm install
-```
+Proyecto precario manejando comunicacion entre componentes
+mediante props y custom event , precario eso si .
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
