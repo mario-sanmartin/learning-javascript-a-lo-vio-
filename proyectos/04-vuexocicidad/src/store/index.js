@@ -9,9 +9,13 @@ export default createStore({
     incrementar(state){
       state.contador = state.contador + 10
     }
-
   },
   actions: {
+    //llamados a APis y BDs , accionar una mutacion
+    accionIncrementar({commit}){
+      commit('incrementar')
+    }
+
   },
   modules: {
   }
