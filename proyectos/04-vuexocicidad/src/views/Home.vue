@@ -6,12 +6,13 @@
     >
       {{titulo}}:  {{contador}}
     </h1>
+    <button @click="incrementar">aumentar</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'Home',
   data(){
@@ -25,6 +26,9 @@ export default {
       return [this.contador > 100 ? {'color': 'green'}: {'color':'red'}]
 
     }
+  },
+  methods:{
+    ...mapMutations(['incrementar'])
   }
 }
 </script>
