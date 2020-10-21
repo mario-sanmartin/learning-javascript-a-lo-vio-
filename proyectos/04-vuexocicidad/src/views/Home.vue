@@ -7,14 +7,18 @@
       {{titulo}}:  {{contador}}
     </h1>
     <button @click="accionIncrementar">aumentar</button>
+    <BtnDisminuir />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import BtnDisminuir from '../components/BtnDisminuir'
 import { mapState, mapMutations,mapActions } from 'vuex'
 export default {
   name: 'Home',
+  components:{
+    BtnDisminuir
+  },
   data(){
     return{
       titulo:'Mi contador desde Vuex'
