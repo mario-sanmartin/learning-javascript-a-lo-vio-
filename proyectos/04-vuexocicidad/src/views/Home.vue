@@ -8,16 +8,21 @@
     </h1>
     <button @click="accionIncrementar">aumentar</button>
     <BtnDisminuir />
+    <hr>
+    <BtnAccion :estado="true"/>
+    <BtnAccion :estado="false"/>
   </div>
 </template>
 
 <script>
 import BtnDisminuir from '../components/BtnDisminuir'
+import BtnAccion from '../components/BtnAccion'
 import { mapState, mapMutations,mapActions } from 'vuex'
 export default {
   name: 'Home',
   components:{
-    BtnDisminuir
+    BtnDisminuir,
+    BtnAccion
   },
   data(){
     return{
