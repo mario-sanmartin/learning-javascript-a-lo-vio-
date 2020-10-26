@@ -67,10 +67,16 @@
           >
           Relax
           </label>
-
       </div>
     </div>
 
+    <!-- numeros -->
+    <div class="mt-2">
+      <input type="number"
+      class="form-control"
+      v-model="tarea.numero"
+      >
+    </div>
 
   </form>
   <p>  {{ tarea }} </p>
@@ -87,9 +93,10 @@ export default {
     return{
       tarea:{
         nombre:'',
-        descripcion:'',
+        // descripcion:'',
         categoria:['javascript','desarrollo'],
-        estado: ''
+        estado: '',
+        numero:0
       }
     }
   }
