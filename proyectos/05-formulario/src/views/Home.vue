@@ -1,6 +1,6 @@
 <template>
   <form>
-    <input 
+    <input
     type="text"
     class="form-control my-2"
     placeholder="Ingrese nombre"
@@ -11,7 +11,7 @@
     <div class="my-2">
       <div class="form-check form-check-inline">
         <input
-         type="checkbox"  
+         type="checkbox"
          class="form-check-input"
           v-model="tarea.categoria"
           value="javascript"
@@ -22,11 +22,10 @@
          >
           javascript
          </label>
-              {{tarea.categoria}}
       </div>
       <div class="form-check form-check-inline">
           <input
-          type="checkbox"  
+          type="checkbox"
           class="form-check-input"
             v-model="tarea.categoria"
             value="desarrollo"
@@ -37,12 +36,44 @@
           >
             desarrollo
           </label>
-          {{tarea.categoria}}
       </div>
     </div>
+
+      <!-- Radio -->
+    <div class="my-2">
+      <div class="form-check form-check-inline">
+        <input
+         type="radio"
+          value="urgente"
+          id="radio-1"
+          v-model="tarea.estado"
+         >
+         <label for="radio-1"
+         class="form-check-label"
+         >
+          Urgente
+         </label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input
+          type="radio"
+            value="relax"
+            id="radio-2"
+            v-model="tarea.estado"
+
+          >
+          <label for="radio-2"
+          class="form-check-label"
+          >
+          Relax
+          </label>
+
+      </div>
+    </div>
+
+
   </form>
-  <p>  {{tarea.nombre}}
-  </p>
+  <p>  {{ tarea }} </p>
 </template>
 
 <script>
@@ -57,7 +88,8 @@ export default {
       tarea:{
         nombre:'',
         descripcion:'',
-        categoria:['javascript','desarrollo']
+        categoria:['javascript','desarrollo'],
+        estado: ''
       }
     }
   }
