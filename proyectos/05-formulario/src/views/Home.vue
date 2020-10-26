@@ -115,7 +115,17 @@ export default {
         return
       }
       console.log('no esta vacio');
-    }
+      //envian los datos
+
+      this.tarea = {
+          nombre:'',
+          // descripcion:'',
+          categoria:[],
+          estado: '',
+          numero:0
+      }
+      }
+
   },
   computed:{
     bloquear(){
