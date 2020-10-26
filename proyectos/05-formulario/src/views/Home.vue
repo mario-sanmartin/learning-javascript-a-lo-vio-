@@ -78,7 +78,9 @@
       >
     </div>
 
-    <button  class="btn btn-dark mt-3 btn-block" type="submit">
+    <button  class="btn btn-dark mt-3 btn-block"
+    type="submit"
+    >
       Procesar
     </button>
 
@@ -107,6 +109,11 @@ export default {
   methods:{
     procesarFormulario(){
       console.log(this.tarea);
+      if(this.tarea.nombre.trim() === ""){
+        console.log('campo vacio');
+        return
+      }
+      console.log('no esta vacio');
     }
   }
 }
