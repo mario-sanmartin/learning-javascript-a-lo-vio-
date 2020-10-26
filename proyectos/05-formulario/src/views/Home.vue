@@ -80,7 +80,7 @@
 
     <button  class="btn btn-dark mt-3 btn-block"
     type="submit"
-    disabled
+    :disabled="bloquear"
     >
       Procesar
     </button>
@@ -116,6 +116,12 @@ export default {
       }
       console.log('no esta vacio');
     }
+  },
+  computed:{
+    bloquear(){
+      return this.tarea.nombre.trim() === "" ? true : false
+    }
   }
+
 }
 </script>
