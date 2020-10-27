@@ -57,6 +57,23 @@ export default new Vuex.Store({
         console.log('tarea editada')
         router.push('/')
       })
+    },
+    agregarTarea({commit},nombreTarea){
+      db.collection('tareas').add({
+        nombre: nombreTarea
+      })
+      .then(doc =>{
+        console.log(doc.id)
+        router.push('/')
+      })
+    },
+    //mediante dispatch usamos la otra accion
+    eliminarTarea({commit,dispatch},idTarea){
+      db.collection('tareas').doc(idTarea).delete()
+        .then(()=>{
+          console.log('tarea eliminada...')
+          dispatch('getTareas')
+        })
     }
 
   },
