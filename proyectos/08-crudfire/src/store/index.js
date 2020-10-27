@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { db } from '../firebase'
+import router from '../router';
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -47,6 +48,15 @@ export default new Vuex.Store({
           tarea.id = doc.id
           commit('setTarea',tarea)
         })
+    },
+    editarTarea({commit},tarea){
+      db.collection('tareas').doc(tarea.id).update({
+        nombre: tarea.nombre
+      })
+      .then(()=> {
+        console.log('tarea editada')
+        router.push('/')
+      })
     }
 
   },
