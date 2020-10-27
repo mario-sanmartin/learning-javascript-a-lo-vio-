@@ -3,8 +3,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-name: 'Inicio'
+  name: 'Inicio',
+  created(){
+   this.getTareas() 
+  },
+  methods:{
+    ...mapActions(['getTareas'])
+  }
 }
 </script>
 
