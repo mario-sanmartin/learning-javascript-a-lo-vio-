@@ -18,6 +18,13 @@ export default new Vuex.Store({
     },
     setTarea(state,payload){
       state.tarea = payload
+    },
+    eliminarTarea(state,payload){
+      const tareasFiltradas = state.tareas = state.tareas.filter(item => item.id !== payload)
+      // console.log(tareasFiltradas);
+      state.tareas = tareasFiltradas
+      //cuando item.id sea distitnto del id que estamos recibiendo lo elimine del array
+      // y devolvera todo lo que sea distinto
     }
   },
   actions: {
@@ -72,7 +79,8 @@ export default new Vuex.Store({
       db.collection('tareas').doc(idTarea).delete()
         .then(()=>{
           console.log('tarea eliminada...')
-          dispatch('getTareas')
+          // dispatch('getTareas')
+          commit('eliminarTarea',idTarea)
         })
     }
 
