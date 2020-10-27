@@ -1,13 +1,30 @@
 <template>
-  <h1>Inicio</h1>
+  <div>
+    <h1>Tareas</h1>
+    <ul>
+      <li v-for="(tarea,index) in tareas" :key="index">
+        {{tarea.nombre}} - {{tarea.id}}
+
+        <router-link :to="{name:'Editar',params:{id: tarea.id}}">
+          <button>
+            editar
+          </button>
+        </router-link>
+        
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Inicio',
   created(){
    this.getTareas() 
+  },
+  computed:{
+    ...mapState(['tareas'])
   },
   methods:{
     ...mapActions(['getTareas'])
