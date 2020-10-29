@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { db } from '../firebase'
-import router from '../router';
+import { auth, db } from '../firebase'
+import router from '../router'
+
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -10,7 +12,10 @@ export default new Vuex.Store({
     tarea:{
       nombre:'',
       id:''
-    }
+    },
+      //autenticacion
+      usuario: null,
+      error: null
   },
   mutations: {
     setTareas(state,payload){
@@ -25,6 +30,14 @@ export default new Vuex.Store({
       state.tareas = tareasFiltradas
       //cuando item.id sea distitnto del id que estamos recibiendo lo elimine del array
       // y devolvera todo lo que sea distinto
+    }
+    ,
+    //Autenticacion
+    setUsuario(state,payload){
+      state.usuario = payload
+    },
+    setError(state,payload){
+      state.error = payload
     }
   },
   actions: {
@@ -81,6 +94,23 @@ export default new Vuex.Store({
           console.log('tarea eliminada...')
           // dispatch('getTareas')
           commit('eliminarTarea',idTarea)
+        })
+    },
+
+    //Autenticacion
+    crearUsuario({commit}, usuario){
+      auth.createUserWithEmailAndPassword(usuario.email, usuario.password)
+        .then(res => {
+          console.log(res);
+          const usuarioCreado = {
+            email: res.user.email,
+            uid: res.user.uid
+          }
+          commit('setUsuario',usuarioCreado)
+        })
+        .catch(error => {
+          console.log(error);
+          commit('setError',error)
         })
     }
 

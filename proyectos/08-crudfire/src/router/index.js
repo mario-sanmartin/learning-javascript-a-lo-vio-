@@ -19,6 +19,13 @@ const routes = [
     path: '/agregar',
     name: 'Agregar',
     component: () => import(/* webpackChunkName: "about" */ '../views/Agregar.vue')
+  },
+
+  //
+  {
+    path: '/registro',
+    name: 'Registro',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Registro.vue')
   }
 ]
 
