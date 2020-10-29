@@ -17,7 +17,9 @@
           placeholder="Repita su contraseña"
           v-model="pass2"
           >
-          <button type="submit">
+          <button type="submit"
+          :disabled="!desactivar"
+          >
             registrar usuario
           </button>
       </form>
@@ -41,7 +43,10 @@ export default {
 
     },
     computed:{
-        ...mapState(['error'])
+        ...mapState(['error']),
+        desactivar(){
+         return this.pass1 === this.pass2 && this.pass1.trim() !== ''
+        }
     },
     methods:{
         ...mapActions(['crearUsuario'])
