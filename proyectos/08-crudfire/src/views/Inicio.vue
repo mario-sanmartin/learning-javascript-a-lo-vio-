@@ -1,5 +1,6 @@
 <template>
   <div class="text-center">
+     
     <h1>Inicio</h1>
    <router-link to="/agregar">
       <button class="btn btn-info btn-block">Agregar</button>

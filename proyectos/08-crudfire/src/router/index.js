@@ -21,7 +21,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Agregar.vue')
   },
 
-  //
+  //Autenticaion
   {
     path: '/registro',
     name: 'Registro',

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center">
       <h1>Registro de usuario</h1>
       <form @submit.prevent="crearUsuario({email: email,password: pass1})">
           <input
@@ -45,7 +45,7 @@ export default {
     computed:{
         ...mapState(['error']),
         desactivar(){
-         return this.pass1 === this.pass2 && this.pass1.trim() !== ''
+         return this.pass1 === this.pass2 && this.pass1.trim() !== '' && this.pass1.lenght > 5
         }
     },
     methods:{

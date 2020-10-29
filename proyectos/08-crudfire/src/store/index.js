@@ -107,6 +107,7 @@ export default new Vuex.Store({
             uid: res.user.uid
           }
           commit('setUsuario',usuarioCreado)
+          router.push('/')
         })
         .catch(error => {
           console.log(error);

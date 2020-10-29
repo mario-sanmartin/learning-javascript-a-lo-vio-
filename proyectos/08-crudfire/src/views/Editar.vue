@@ -3,7 +3,7 @@
       {{tarea.id}} - {{tarea.nombre}}
        <h1>Editar</h1>
        <form @submit.prevent="editarTarea(tarea)"
-       class="form-inline"
+       class="text-center"
        >
        <div class="input-group mb-2 mr-sm-2">
            <div class="input-group-prepend">
