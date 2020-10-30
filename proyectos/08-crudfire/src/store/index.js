@@ -101,7 +101,7 @@ export default new Vuex.Store({
     crearUsuario({commit}, usuario){
       auth.createUserWithEmailAndPassword(usuario.email, usuario.password)
         .then(res => {
-          console.log(res);
+          // console.log(res);
           const usuarioCreado = {
             email: res.user.email,
             uid: res.user.uid
