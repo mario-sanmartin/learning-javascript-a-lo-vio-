@@ -2,6 +2,8 @@
   <div class="text-center">
      
     <h1>Inicio</h1>
+    <strong>Email:</strong>
+    <p>{{usuario.email}}</p>
    <router-link to="/agregar">
       <button class="btn btn-info btn-block">Agregar</button>
    </router-link>
@@ -38,7 +40,7 @@ export default {
    this.getTareas() 
   },
   computed:{
-    ...mapState(['tareas'])
+    ...mapState(['tareas','usuario'])
   },
   methods:{
     ...mapActions(['getTareas','eliminarTarea'])

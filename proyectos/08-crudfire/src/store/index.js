@@ -110,9 +110,34 @@ export default new Vuex.Store({
           router.push('/')
         })
         .catch(error => {
-          console.log(error);
+          // console.log(error);
           commit('setError',error)
         })
+    },
+    ingresoUsuario({commit},usuario){
+      auth.signInWithEmailAndPassword(usuario.email, usuario.password)
+        .then(res =>{
+          // console.log(res);
+          const usuarioCreado = {
+            email: res.user.email,
+            uid: res.user.uid
+          }
+          commit('setUsuario',usuarioCreado)
+          router.push('/')
+        })
+        .catch(error => {
+          // console.log(error);
+          commit('setError',error)
+        })
+    },
+    cerrarSession({commit}){
+      auth.signOut()
+        .then(()=>{
+          router.push('/acceso')
+        })
+    },
+    detectarUsuario({commit},usuario){
+      commit('setUsuario',usuario)
     }
 
   },
