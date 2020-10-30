@@ -18,6 +18,15 @@
               <strong>Seguidores: </strong> {{seguidores}}
           </div>
       </div>
+      <div class="perfil-usuario-twoots">
+        <div class="perfil-usuario-twoots"
+         v-for="comentario in user.twoots"
+         :key="comentario.id"
+         >
+          {{comentario.content}}
+        </div>
+
+      </div>
   </div>
 </template>
 
@@ -33,7 +42,12 @@ export default {
         nombre: 'Mario',
         apellido: 'San Martin',
         email: 'mariomoreno@kk.com',
-        isAdmin: true
+        isAdmin: true,
+        twoots: [
+          {id:1,content:'Ale chiqui'},
+          {id:2,content:'Ser feliz juntos'},
+          {id:3,content:'Comprar cortinas'}
+        ]
       }
     }
   },
