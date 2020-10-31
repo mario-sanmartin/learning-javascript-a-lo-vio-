@@ -106,8 +106,14 @@ export default new Vuex.Store({
             email: res.user.email,
             uid: res.user.uid
           }
-          commit('setUsuario',usuarioCreado)
-          router.push('/')
+
+          db.collection(res.user.email).add({
+            nombre:'tarea de ejemplo'
+          }).then(doc => {
+            commit('setUsuario',usuarioCreado)
+            router.push('/')
+          }).catch(error => console.log(error));
+
         })
         .catch(error => {
           // console.log(error);
@@ -140,6 +146,15 @@ export default new Vuex.Store({
       commit('setUsuario',usuario)
     }
 
+  },
+  getters:{
+    existeUsuario(state){
+      if(state.usuario === null){
+        return false
+      }else {
+        return true
+      }
+    }
   },
   modules: {
   }

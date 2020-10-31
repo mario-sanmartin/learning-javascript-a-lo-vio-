@@ -1,18 +1,29 @@
 <template>
   <div id="app" class="container text-center">
     <div>
-      <router-link to="/">
+      <router-link
+       to="/"
+        v-if="existeUsuario">
       Inicio
       </router-link> |
-      <router-link to="/registro">
+      <router-link 
+      to="/registro"
+      v-if="!existeUsuario"
+      >
       registro
       </router-link>
-      <router-link to="/acceso"> |
+      <router-link 
+      to="/acceso"
+      v-if="!existeUsuario"
+      > |
       Login
       </router-link>
       <button
       @click.prevent="cerrarSession"
-      >cerrar Session</button>
+      v-if="existeUsuario"
+      >
+      cerrar Session
+      </button>
     </div>
           <Logo class="text-center"/>
 
@@ -23,7 +34,7 @@
 
 <script>
 
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Logo from './components/Logo'; 
 export default {
   components:{
@@ -31,6 +42,9 @@ export default {
   },
   methods:{
     ...mapActions(['cerrarSession'])
+  },
+  computed: {
+    ...mapGetters(['existeUsuario'])
   }
   
 }
