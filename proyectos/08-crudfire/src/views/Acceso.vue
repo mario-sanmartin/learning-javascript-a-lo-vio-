@@ -5,12 +5,17 @@
               <input type="email"
               placeholder="ingrese email"
               v-model="email"
+              class="form-control mb-2"
               >
               <input type="password"
               placeholder="ingrese contraseña"
-              v-model="pass1"  
+              v-model="pass1" 
+              class="form-control mb-2"
               >
-              <button type="submit">ingresar</button>
+              <button
+               type="submit"
+               class="btn btn-primary"
+               >ingresar</button>
           </form>
           <p>{{error}}</p>
     </div>

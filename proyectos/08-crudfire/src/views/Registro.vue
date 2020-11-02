@@ -6,19 +6,23 @@
            type="email"
            placeholder="Ingrese su correo"
            v-model="email"
+           class="form-control mb-2"
           >
           <input 
           type="password"
           placeholder="ingrese su contraseña"
           v-model="pass1"
+          class="form-control mb-2"
           >
           <input 
           type="password"
           placeholder="Repita su contraseña"
           v-model="pass2"
+          class="form-control mb-2"
           >
           <button type="submit"
           :disabled="!desactivar"
+          class="btn btn-success"
           >
             registrar usuario
           </button>
@@ -34,9 +38,9 @@ export default {
     name:'Registro',
     data(){
         return{
-            email: '',
+            email:'',
             pass1:'',
-            pass2: ''
+            pass2:''
         }
     },
     created(){

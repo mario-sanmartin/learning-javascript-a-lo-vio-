@@ -1,31 +1,35 @@
 <template>
   <div id="app" class="container text-center">
-    <div>
+    <div class="mt-2">
       <router-link
+      class="btn btn-success mr-2"
        to="/"
         v-if="existeUsuario">
       Inicio
-      </router-link> |
+      </router-link> 
       <router-link 
+      class="btn btn-info mr-2"
       to="/registro"
       v-if="!existeUsuario"
       >
       registro
       </router-link>
       <router-link 
+      class="btn btn-success mr-2"
       to="/acceso"
       v-if="!existeUsuario"
-      > |
+      > 
       Login
       </router-link>
       <button
+      class="btn btn-danger mr-2"
       @click.prevent="cerrarSession"
       v-if="existeUsuario"
       >
-      cerrar Session
+      cerrar
       </button>
     </div>
-          <Logo class="text-center"/>
+          <Logo class="text-center mt-2"/>
 
     <router-view/>
     

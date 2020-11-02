@@ -42,11 +42,12 @@ export default new Vuex.Store({
   },
   actions: {
     //llamamos a la colección de firebase
-    getTareas({commit}){
+    // getTareas({commit}){
+    getTareas({commit,state}){ //accedemos al state por ende al usuario
 
       const tareas = []
-
-      db.collection('tareas').get()
+      // db.collection('tareas').get()
+      db.collection(state.usuario.email).get() //agregamos el campo a la coleccion usuario
         .then(res => {
           res.forEach(doc => {
             // console.log(doc.id)
@@ -59,8 +60,8 @@ export default new Vuex.Store({
           commit('setTareas',tareas)
         })
     },
-    getTarea({commit},idTarea){
-      db.collection('tareas').doc(idTarea).get()
+    getTarea({commit,state},idTarea){//Se replica la accion de getTareas tanto en el commit como en la collection
+      db.collection(state.usuario.email).doc(idTarea).get()
         .then(doc => {
           console.log(doc.id)
           console.log(doc.data());
@@ -69,8 +70,8 @@ export default new Vuex.Store({
           commit('setTarea',tarea)
         })
     },
-    editarTarea({commit},tarea){
-      db.collection('tareas').doc(tarea.id).update({
+    editarTarea({commit,state},tarea){
+      db.collection(state.usuario.email).doc(tarea.id).update({
         nombre: tarea.nombre
       })
       .then(()=> {
@@ -78,8 +79,8 @@ export default new Vuex.Store({
         router.push('/')
       })
     },
-    agregarTarea({commit},nombreTarea){
-      db.collection('tareas').add({
+    agregarTarea({commit,state},nombreTarea){ //Misma accion que en las actions anteriores
+      db.collection(state.usuario.email).add({
         nombre: nombreTarea
       })
       .then(doc =>{
@@ -88,8 +89,8 @@ export default new Vuex.Store({
       })
     },
     //mediante dispatch usamos la otra accion
-    eliminarTarea({commit,dispatch},idTarea){
-      db.collection('tareas').doc(idTarea).delete()
+    eliminarTarea({commit,state},idTarea){ //lo mismo que en las demas
+      db.collection(state.usuario.email).doc(idTarea).delete()
         .then(()=>{
           console.log('tarea eliminada...')
           // dispatch('getTareas')
