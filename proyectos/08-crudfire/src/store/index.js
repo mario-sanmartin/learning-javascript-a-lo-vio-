@@ -125,11 +125,11 @@ export default new Vuex.Store({
       auth.signInWithEmailAndPassword(usuario.email, usuario.password)
         .then(res =>{
           // console.log(res);
-          const usuarioCreado = {
+          const usuarioLogueado = {
             email: res.user.email,
             uid: res.user.uid
           }
-          commit('setUsuario',usuarioCreado)
+          commit('setUsuario',usuarioLogueado)
           router.push('/')
         })
         .catch(error => {
