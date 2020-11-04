@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
       <h1>Registro de usuario</h1>
-      <form @submit.prevent="crearUsuario({email: email,password: pass1})">
+      <form @submit.prevent="crearUsuario({email: email, password: pass1})">
           <input
            type="email"
            placeholder="Ingrese su correo"

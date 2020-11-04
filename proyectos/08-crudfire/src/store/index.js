@@ -63,7 +63,7 @@ export default new Vuex.Store({
     getTarea({commit,state},idTarea){//Se replica la accion de getTareas tanto en el commit como en la collection
       db.collection(state.usuario.email).doc(idTarea).get()
         .then(doc => {
-          console.log(doc.id)
+          // console.log(doc.id)
           console.log(doc.data());
           let tarea = doc.data()
           tarea.id = doc.id
@@ -84,7 +84,7 @@ export default new Vuex.Store({
         nombre: nombreTarea
       })
       .then(doc =>{
-        console.log(doc.id)
+        // console.log(doc.id)
         router.push('/')
       })
     },
