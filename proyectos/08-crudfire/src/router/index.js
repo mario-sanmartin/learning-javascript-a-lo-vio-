@@ -10,7 +10,13 @@ const routes = [
     path: '/',
     name: 'Inicio',
     component: () => import(/* webpackChunkName: "about" */ '../views/Inicio.vue'),
-    meta:{ requiresAuth: true}
+    meta:{ requiresAuth: true,title:'Lentes y Sueño'}
+  },
+  {
+    path: '/informacion',
+    name: 'Informacion',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Informacion.vue'),
+    meta:{ requiresAuth: false,title:'Lentes y Sueño'}
   },
   {
     path: '/editar/:id',
@@ -29,12 +35,14 @@ const routes = [
   {
     path: '/registro',
     name: 'Registro',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Registro.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Registro.vue'),
+    meta:{ requiresAuth: false,title:'Lentes y Sueño'}
   },
   {
     path: '/acceso',
     name: 'Acceso',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Acceso.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Acceso.vue'),
+    meta:{ title:'Lentes y Sueño'}
   }
 ]
 
@@ -54,6 +62,7 @@ router.beforeEach((to,from,next) =>{
       if(!usuario){
         next({path: '/acceso'})
       }else{
+        document.title = to.meta.title;
         next()
 
       }

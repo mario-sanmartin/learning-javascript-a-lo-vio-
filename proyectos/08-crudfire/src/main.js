@@ -4,6 +4,14 @@ import router from './router'
 import store from './store'
 import {auth } from './firebase'
 
+//Archivos bootstrap previo su instalacion npm i bootstrap-vue
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue);
+
+//archivos Css Bootstrap
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 Vue.config.productionTip = false
 
 //Observador

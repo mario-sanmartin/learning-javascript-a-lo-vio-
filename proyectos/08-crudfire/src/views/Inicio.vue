@@ -1,7 +1,7 @@
 <template>
-  <div class="text-center">
+  <div>
      
-    <h1>Inicio</h1>
+    <h1>Control venta de lentes</h1>
     <strong>Email:</strong>
     <p>{{usuario.email}}</p>
    <router-link to="/agregar">
