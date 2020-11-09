@@ -15,7 +15,8 @@ export default new Vuex.Store({
     },
       //autenticacion
       usuario: null,
-      error: null
+      error: null,
+      carga: false
   },
   mutations: {
     setTareas(state,payload){
@@ -38,6 +39,12 @@ export default new Vuex.Store({
     },
     setError(state,payload){
       state.error = payload
+    },
+
+
+    //Spinner
+    cargarFirebase(state,payload){
+      state.carga = payload
     }
   },
   actions: {
@@ -45,6 +52,7 @@ export default new Vuex.Store({
     // getTareas({commit}){
     getTareas({commit,state}){ //accedemos al state por ende al usuario
 
+      commit('cargarFirebase',true);
       const tareas = []
       // db.collection('tareas').get()
       db.collection(state.usuario.email).get() //agregamos el campo a la coleccion usuario
@@ -56,9 +64,13 @@ export default new Vuex.Store({
             tarea.id = doc.id //tarea individual
             tareas.push(tarea)//empujando la tarea individual al array
           })
-
-          commit('setTareas',tareas)
+          //Spinner
+          setTimeout(() => {
+            commit('cargarFirebase',false);            
+          }, 2000);
         })
+        commit('setTareas',tareas)
+
     },
     getTarea({commit,state},idTarea){//Se replica la accion de getTareas tanto en el commit como en la collection
       db.collection(state.usuario.email).doc(idTarea).get()
