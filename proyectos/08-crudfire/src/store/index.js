@@ -11,6 +11,7 @@ export default new Vuex.Store({
     tareas:[],
     tarea:{
       nombre:'',
+      numero: null,
       id:''
     },
       //autenticacion
@@ -84,16 +85,18 @@ export default new Vuex.Store({
     },
     editarTarea({commit,state},tarea){
       db.collection(state.usuario.email).doc(tarea.id).update({
-        nombre: tarea.nombre
+        nombre: tarea.nombre,
+        numero : tarea.numero
       })
       .then(()=> {
         console.log('tarea editada')
         router.push('/')
       })
     },
-    agregarTarea({commit,state},nombreTarea){ //Misma accion que en las actions anteriores
+    agregarTarea({commit,state},nombreTarea,numeroTarea){ //Misma accion que en las actions anteriores
       db.collection(state.usuario.email).add({
-        nombre: nombreTarea
+        nombre: nombreTarea,
+        numero: numeroTarea
       })
       .then(doc =>{
         // console.log(doc.id)
@@ -121,7 +124,8 @@ export default new Vuex.Store({
           }
 
           db.collection(res.user.email).add({
-            nombre:'tarea de ejemplo'
+            nombre:'tarea de ejemplo',
+            numero : 0
           }).then(doc => {
             commit('setUsuario',usuarioCreado)
             router.push('/')
